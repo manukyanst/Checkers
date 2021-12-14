@@ -34,7 +34,7 @@ class Board:
             for col in range(row % 2, COLS, 2):
                 pygame.draw.rect(screen, BEIGE, (row*SQUARE_SIZE, col*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
                 
-    def new_board(self):
+    def create_board(self):
         
         """ Функция рисует шашки на доске в начале игры """
         
@@ -42,16 +42,16 @@ class Board:
             self.board.append([])
             for col in range(COLS):
                 if col % 2 == ((row + 1) % 2):
-                    if raw < 3:
+                    if row < 3:
                         self.board[row].append(Piece(row, col, WHITE))
                     elif row > 4:
-                        self.board[row].append(Piece(row, col, RED))
+                        self.board[row].append(Piece(row, col, BLACK))
                     else:
                         self.board[row].append(0)
                 else:
                     self.board[row].append(0)
                
-     def draw(self, screen):
+    def draw(self, screen):
         
         """ Функция рисует квадраты и шашки на экране """
         
