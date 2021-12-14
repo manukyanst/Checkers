@@ -1,9 +1,26 @@
 import pygame
 
 " В этом файле хранятся все константы - значения размеров поля, картинки и т.д."
-WEIGHT = 800
-HEIGHT = 800
 
-SIZE = 10
+WIDTH = 800 #ширина доски
+HEIGHT = 800 #высота доски
 
-BOARD_IMAGE =  pygame.image.load('')        #доска
+ROWS = 8 #число строк
+COLS = 8 #число столбцов
+
+SQUARE_SIZE = WIDTH//ROWS #размер квадрата
+
+#цвета rgb
+BROWN = (100, 67, 33)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+BEIGE = (255, 230, 180)
+BLUE = (0, 0, 255)
+
+
+
+
+
+
+
+
