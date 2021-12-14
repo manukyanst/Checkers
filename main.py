@@ -1,6 +1,7 @@
 import pygame
 from values import *
 from board import *
+from piece import *
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
