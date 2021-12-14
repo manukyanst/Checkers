@@ -21,7 +21,7 @@ class Piece:
         self.row = row
         self.col = col
         self.color = color
-        self.line_color = RED
+        self.line_color = GREY
         self.king = False
 
         if self.color == BLACK:
@@ -52,4 +52,3 @@ class Piece:
         
 
 
-    
