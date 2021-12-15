@@ -45,7 +45,7 @@ class Piece:
 
     def draw(self, screen):
         """ Функция отрисовывает шашку в нужном положении """
-        r = SQUARE_SIZE//2 - BOARDER
+        r = SQUARE_SIZE//2 - 5 * BOARDER
         pygame.draw.circle(screen, self.line_color, (self.x, self.y), r + LINE)
         pygame.draw.circle(screen, self.color, (self.x, self.y), r)
         
