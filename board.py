@@ -33,7 +33,30 @@ class Board:
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
                 pygame.draw.rect(screen, BEIGE, (row*SQUARE_SIZE, col*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-                
+
+    def move(self, piece, row, col):
+
+        """ Функция меняет позицию шашки """
+        
+        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+        #меняем местами начальные "координаты" шашки с конечными в списке
+        piece.move(row, col)
+
+        #если шашка дошла до конца доски, она становимся королем
+        if row == ROWS or row == 0:
+            piece.make_king()
+            if piece.color == WHITE:
+                self.white_kings += 1
+            else:
+                self.black_kings += 1
+        
+    
+    def get_piece(self, row, col):
+        
+        """ Функция возвращает объект по номеру строки и столбца """
+        
+        return self.board[row][col]
+    
     def create_board(self):
         
         """ Функция рисует шашки на доске в начале игры """
@@ -61,7 +84,3 @@ class Board:
                 piece = self.board[row][col]
                 if piece != 0:
                     piece.draw(screen)
-
-
-
-        
