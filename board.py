@@ -8,17 +8,17 @@ from piece import Piece
 class Board:
     def __init__(self):
         """ Конструктор класса Board
-        Arguments:
-        board - двумерный массив, в котором хранится информация
-        о положении шашек на доске
-        selected_square - значение, показывающее, выбран ли квадрат на доске для хода
-        black/white pieces - количество белых или черных шашек
-        black/white kings - количество белых или черных королей
-        create_board - создание массива данных доски (строки и столбцы)
-        """
+            Arguments:
+            board - двумерный массив, в котором хранится информация
+            о положении шашек на доске
+            selected_square - значение, показывающее, выбран ли квадрат на доске для хода
+            black/white pieces - количество белых или черных шашек
+            black/white kings - количество белых или черных королей
+            create_board - создание массива данных доски (строки и столбцы)
+            """
         self.board = []
         self.black_pieces = self.white_pieces = 12
-        self.white_kings = self.black_kings = 0
+        self.black_kings = self.white_kings = 0
         self.create_board()
 
     def draw_squares(self, screen):
@@ -32,19 +32,19 @@ class Board:
 
     def move(self, piece, row, col):
 
-        """ Функция меняет позицию шашки """
+            """ Функция меняет позицию шашки """
 
-        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
-        # меняем местами начальные "координаты" шашки с конечными в списке
-        piece.move(row, col)
+            self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+            # меняем местами начальные "координаты" шашки с конечными в списке
+            piece.move(row, col)
 
-        # если шашка дошла до конца доски, она становимся королем
-        if row == ROWS - 1 or row == 0:
-            piece.make_king()
-            if piece.color == WHITE:
-                self.white_kings += 1
-            else:
-                self.black_kings += 1
+            # если шашка дошла до конца доски, она становимся королем
+            if row == ROWS - 1 or row == 0:
+                piece.make_king()
+                if piece.color == WHITE:
+                    self.white_kings += 1
+                else:
+                    self.black_kings += 1
 
     def get_piece(self, row, col):
 
@@ -84,7 +84,7 @@ class Board:
         for piece in pieces:
             self.board[piece.row][piece.col] = 0
             if piece != 0:
-                if piece.color == BROWN:
+                if piece.color == BLACK:
                     self.black_pieces -= 1
                 else:
                     self.white_pieces -= 1
@@ -93,7 +93,7 @@ class Board:
         if self.black_pieces <= 0:
             return WHITE
         elif self.white_pieces <= 0:
-            return BROWN
+            return BLACK
 
         return None
 
@@ -103,7 +103,7 @@ class Board:
         right = piece.col + 1
         row = piece.row
 
-        if piece.color == BROWN or piece.king:
+        if piece.color == BLACK or piece.king:
             moves.update(self._traverse_left(row - 1, max(row - 3, -1), -1, piece.color, left))
             moves.update(self._traverse_right(row - 1, max(row - 3, -1), -1, piece.color, right))
         if piece.color == WHITE or piece.king:
@@ -183,4 +183,3 @@ class Board:
             right += 1
 
         return moves
-
