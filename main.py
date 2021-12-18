@@ -1,7 +1,7 @@
 import pygame
 from values import *
 from game import Game
-
+from algorithm import minimax
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
@@ -24,6 +24,10 @@ def main():
 
     while not finished:
         clock.tick(FPS)
+
+        if game.turn == WHITE:
+            value, new_board = minimax(game.get_board(), 3, WHITE)
+            game.ai_move(new_board)
 
         if game.winner() is not None:
             print(game.winner())
