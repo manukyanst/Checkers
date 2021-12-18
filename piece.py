@@ -3,7 +3,6 @@ import pygame
 
 
 class Piece:
-    BOARDER = 2
 
     def __init__(self, row, col, color):
         self.row = row
