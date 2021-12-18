@@ -21,6 +21,22 @@ class Board:
         self.black_kings = self.white_kings = 0
         self.create_board()
 
+
+    def evalute(self):
+        """Функция возвращает число очков (цель белых(ии) - максимизация очков, цель черных - минимизация)"""
+        return self.white_pieces - self.black_pieces + 0.5*(self.white_kings - self.black_kings)
+
+    def get_all_pieces(self, color):
+        """ Функция возвращает массив - положение шашек на доске заданного цвета """
+        pieces =[]
+        for row in self.board:
+            for piece in row:
+                if piece != 0 and piece.color == color:
+                    pieces.append(piece)
+        return pieces
+                
+        
+
     def draw_squares(self, screen):
 
         """ Функция рисует квадраты доски """
@@ -29,6 +45,8 @@ class Board:
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
                 pygame.draw.rect(screen, BEIGE, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+
+            
 
     def move(self, piece, row, col):
 
