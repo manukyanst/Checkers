@@ -22,7 +22,7 @@ class Board:
         self.create_board()
 
 
-    def evalute(self):
+    def evaluate(self):
         """Функция возвращает число очков (цель белых(ии) - максимизация очков, цель черных - минимизация)"""
         return self.white_pieces - self.black_pieces + 0.5*(self.white_kings - self.black_kings)
 
