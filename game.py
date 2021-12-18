@@ -65,3 +65,26 @@ class Game:
             self.turn = WHITE
         else:
             self.turn = BLACK
+
+
+
+    def get_board(self):
+        """Функция возвращает состояние доски"""
+        return self.board
+
+    def ai_move(self, board):
+        """Функция "движения" шашки со стороны ии
+            (по сути происходит не ход, а обновление доски)"""
+        self.board = board
+        self.change_turn()
+        
+        
+
+
+
+
+
+
+        
+
+    
