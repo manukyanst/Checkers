@@ -2,10 +2,13 @@ import pygame
 from values import *
 from game import Game
 from algorithm import minimax
+pygame.init()
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
 FPS = 60
+
+pygame.mixer.music.load('move_sound.mp3')
 
 
 def get_row_col_from_mouse(pos):
@@ -43,8 +46,8 @@ def main():
                 game.select(row, col)
 
         game.update()
+        pygame.mixer.music.play(0)
 
     pygame.quit()
-
 
 main()
