@@ -66,8 +66,6 @@ class Game:
         else:
             self.turn = BLACK
 
-
-
     def get_board(self):
         """Функция возвращает состояние доски"""
         return self.board
