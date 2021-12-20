@@ -11,6 +11,7 @@ f1 = pygame.font.Font(None, 36)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
 FPS = 60
+
 game_mode = 0
 
 
@@ -59,6 +60,8 @@ def main(game_mode):
                 row, col = get_row_col_from_mouse(pos)
                 game.select(row, col)
             game.update()
+
+            
 
         if game.winner() is not None:
             print(game.winner())
