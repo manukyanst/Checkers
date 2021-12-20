@@ -18,5 +18,6 @@ BEIGE = (255, 230, 180)
 GREEN = (0, 255, 0)
 
 CROWN = pygame.transform.scale(pygame.image.load('graphics/crown.png'), (44, 25))
+MENU_BACKGROUND = pygame.image.load('graphics/background.WebP')
 
 MOVE_SOUND = pygame.mixer.Sound('sounds/move_sound.mp3')
