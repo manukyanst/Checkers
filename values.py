@@ -1,5 +1,5 @@
 import pygame
-
+pygame.init()
 " В этом файле хранятся все константы - значения размеров поля, картинки и т.д."
 
 WIDTH, HEIGHT = 800, 800
@@ -19,3 +19,4 @@ GREEN = (0, 255, 0)
 
 CROWN = pygame.transform.scale(pygame.image.load('graphics/crown.png'), (44, 25))
 
+MOVE_SOUND = pygame.mixer.Sound('sounds/move_sound.mp3')
