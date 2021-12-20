@@ -1,34 +1,29 @@
 import pygame
+from values import *
 
 pygame.init()
 f1 = pygame.font.Font(None, 36)
 
 def draw_menu(screen):
-    screen.fill((0,0,0))
-    pygame.draw.rect(screen, (255, 0, 255), (100, 100, 600, 100))
-    text01 = f1.render('SINGLE MODE', True, (0, 0, 0))
-    screen.blit(text01, (300, 140))
-    pygame.draw.rect(screen, (0, 255, 0), (100, 400, 600, 100))
-    text02 = f1.render('PVP MODE', True, (0, 0, 0))
-    screen.blit(text02, (330, 440))
+    ''' Функция рисует меню на экране '''
+    screen.blit(MENU_BACKGROUND, (0, 0))
+    pygame.draw.rect(screen, (BEIGE), (WIDTH // 8, HEIGHT // 3, WIDTH * 2 // 3 + 50, HEIGHT // 8))
+    text01 = f1.render('SINGLE MODE', True, BLACK)
+    screen.blit(text01, (WIDTH // 8 + 200, HEIGHT // 3 + 40))
+    pygame.draw.rect(screen, (GREY), (WIDTH // 8, HEIGHT // 2, WIDTH * 2 // 3 + 50, HEIGHT // 8))
+    text02 = f1.render('PVP MODE', True, BLACK)
+    screen.blit(text02, (WIDTH // 8 + 230, HEIGHT // 2 + 40))
     pygame.display.update()
 
 
 def start_game(x, y, game_mode, screen):
-
+    ''' Функция воспринимает нажатия на конкретный пункт меню '''
     if game_mode == 0:
         
-        if (x > 100 and x < 700 and y > 100 and y < 200):
+        if (x > WIDTH // 8 and x < WIDTH // 8 + WIDTH * 2 // 3 + 50 and y > HEIGHT // 3 and y < HEIGHT // 3 + HEIGHT // 8):
             game_mode = 1
 
-        if (x > 100 and x < 700 and y > 400 and y < 500):
+        if (x > WIDTH // 8 and x <  WIDTH // 8 + WIDTH * 2 // 3 + 50 and y > HEIGHT // 2 and y < HEIGHT // 2 + HEIGHT // 3 + HEIGHT // 8 + HEIGHT // 8):
             game_mode = 2
 
     return game_mode
-
-        
-
-
-    
-    
-
