@@ -98,6 +98,9 @@ class Board:
                     piece.draw(screen)
 
     def remove(self, pieces):
+        
+        """Функция удаляет съеденные шашки и визуализацию возможных кодов"""
+        
         for piece in pieces:
             self.board[piece.row][piece.col] = 0
             if piece != 0:
@@ -107,6 +110,8 @@ class Board:
                     self.white_pieces -= 1
 
     def winner(self):
+        
+        """Функция выявляет победителя"""
         if self.black_pieces <= 0:
             return WHITE
         elif self.white_pieces <= 0:
@@ -115,6 +120,8 @@ class Board:
         return None
 
     def get_valid_moves(self, piece):
+        
+        """Функция выдает возможные ходы"""
         moves = {}
         left = piece.col - 1
         right = piece.col + 1
@@ -130,6 +137,9 @@ class Board:
         return moves
 
     def _traverse_left(self, start, stop, step, color, left, skipped=None):
+        
+        """Функция отвечает за движение шашки о левой диагонали"""
+        
         if skipped is None:
             skipped = []
         moves = {}
@@ -165,6 +175,9 @@ class Board:
         return moves
 
     def _traverse_right(self, start, stop, step, color, right, skipped=None):
+        
+        """Функция отвечает за движение шашки по правой диагонали"""
+        
         if skipped is None:
             skipped = []
         if skipped is None:
