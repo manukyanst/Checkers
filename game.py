@@ -9,11 +9,17 @@ class Game:
         self.screen = screen
 
     def update(self):
+        
+        """Функция обновляет положение игры"""
+        
         self.board.draw(self.screen)
         self.draw_valid_moves(self.valid_moves)
         pygame.display.update()
 
     def _init(self):
+        
+        """Функция определяет начальные настройки"""
+        
         self.selected = None
         self.board = Board()
         self.turn = BLACK
@@ -23,9 +29,15 @@ class Game:
         return self.board.winner()
 
     def reset(self):
+        
+        """Функция возвращает к начальным настройкам"""
+        
         self._init()
 
     def select(self, row, col):
+        
+        """Выбор шашки и ее перемещения"""
+        
         if self.selected:
             result = self._move(row, col)
             if not result:
@@ -54,12 +66,18 @@ class Game:
         return True
 
     def draw_valid_moves(self, moves):
+        
+        """Отрисовка возможных ходов"""
+        
         for move in moves:
             row, col = move
             pygame.draw.circle(self.screen, BLUE,
                                (col * SQUARE_SIZE + SQUARE_SIZE // 2, row * SQUARE_SIZE + SQUARE_SIZE // 2), 15)
 
     def change_turn(self):
+        
+        """Передает ход"""
+        
         self.valid_moves = {}
         if self.turn == BLACK:
             self.turn = WHITE
