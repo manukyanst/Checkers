@@ -4,17 +4,13 @@ from game import Game
 from algorithm import minimax
 from menu import *
 
-
 pygame.init()
-f1 = pygame.font.Font(None, 36)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
 FPS = 60
 
 game_mode = 0
-
-
 
 def get_row_col_from_mouse(pos):
     """ Функция возвращает номер строки и столбца по положению мыши """
@@ -31,7 +27,7 @@ def main(game_mode):
     game = Game(screen)
 
     while not finished:
-
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 finished = True
@@ -61,11 +57,9 @@ def main(game_mode):
                 game.select(row, col)
             game.update()
 
-            
-
         if game.winner() is not None:
-            print(game.winner())
-            finished = True
+            game_mode = 3
+            end_game(game.winner(), screen)
      
     pygame.quit()
 
